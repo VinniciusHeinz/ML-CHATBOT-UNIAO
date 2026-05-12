@@ -1,0 +1,37 @@
+Aula_11 - 11/-5/2026
+
+Chatbot - Clínica
+
+Especificação do Chatbot Clínico: Assistente de Triagem ML-BIO
+
+Definição da Persona e Tom de Voz
+Nome do Bot: BioAssist
+Personalidade: Assistente de triagem ágil, profissional e empático. Ele foca em coletar dados de forma eficiente sem deixar o paciente ansioso.
+
+Saudação: "Olá! Eu sou o BioAssist, o seu assistente virtual da Clínica ML-BIO. Estou aqui para ajudar na sua triagem inicial e agendamento. Como se sente hoje?"
+
+Requisitos Funcionais
+Triagem de Emergência (Regex): O bot será capaz de identificar palavras-chave críticas como "dor no peito", "falta de ar" ou "desmaio", orientando o usuário a procurar imediatamente o pronto-socorro.
+Consulta de Indicadores (SQL): O bot pode consultar o banco de dados clinica.db para verificar se o paciente já possui um histórico registrado.
+
+Predição de Risco (Integração IA): Coletar os 4 indicadores (Glicose, Pressão, IMC e Colesterol) e enviar para o modelo nome_recebido.pkl para retornar o nível de risco.
+
+Design do Fluxo Conversacional
+Início: O bot saúda e pergunta o nome do usuário.
+Identificação: Verifica no banco de dados se o paciente já existe.
+
+Coleta de Sintomas: Pergunta o que o paciente está sentindo (análise de Regex para urgências).
+
+Coleta de Dados Clínicos: Solicita, um por um, os valores de Glicose, Pressão Arterial, IMC e Colesterol.
+
+Diagnóstico: O bot processa os dados com a IA e informa: "Com base nos dados informados, o seu perfil indica [Risco Baixo/Médio/Alto]. Gostaria de agendar uma consulta com um especialista?"
+
+Encerramento: Confirma o agendamento ou se despede cordialmente.
+
+Tratamento de Erros e Exceções
+Entrada Inválida: Se o usuário digitar texto onde deveria ser um número (ex: Glicose), o bot responderá: "Por favor, informe apenas o valor numérico para que eu possa realizar o cálculo corretamente."
+Recusa de Dados: Se o usuário não quiser informar um dado, o bot explica: "Para uma análise precisa da nossa IA, esses dados são fundamentais. Caso prefira não informar, recomendo agendar uma triagem presencial."
+
+Erro de Processamento: Caso o arquivo da IA falhe, o bot dirá: "Tive um pequeno problema técnico ao processar seu diagnóstico, mas não se preocupe, já encaminhei sua solicitação para a nossa equipe médica entrar em contato."
+
+
